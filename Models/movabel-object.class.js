@@ -1,4 +1,4 @@
-class MobableObject {
+class MovableObject {
     x;
     y;
     img;
