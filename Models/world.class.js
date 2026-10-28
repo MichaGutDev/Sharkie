@@ -7,7 +7,10 @@ class World {
     ]
 
     lights = [
-        new light()
+        new Light()
+    ]
+    backgroundObjects = [
+        new BackgroundObject('img/3. Background/Layers/4.Fondo 2/L1.png', 0, 80)
     ]
     canvas;
     ctx;
@@ -22,14 +25,11 @@ class World {
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-        this.ctx.drawImage(this.character.img, this.character.x, this.character.y, this.character.width, this.character.height);
-        this.enemies.forEach(enemy => {
-            this.ctx.drawImage(enemy.img, enemy.x, enemy.y, enemy.width, enemy.height);
-        });
+        this.addToMap(this.character);
 
-                this.lights.forEach(light => {
-            this.ctx.drawImage(light.img, light.x, light.y, light.width, light.height);
-        });
+        this.addObjectsToMap(this.lights);
+        this.addObjectsToMap(this.enemies);
+        this.addObjectsToMap(this.backgroundObjects);
 
 
         //draw() wird immer wieder aufgerufen
@@ -38,5 +38,17 @@ class World {
             self.draw();
         });
 
+    }
+
+
+    addObjectsToMap(objects) {
+        objects.forEach(o => {
+            this.addToMap(o);
+        });
+    }
+
+
+    addToMap(mo) {
+        this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height)
     }
 }
