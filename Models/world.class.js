@@ -6,6 +6,9 @@ class World {
         new JellyFish()
     ]
 
+    lights = [
+        new light()
+    ]
     canvas;
     ctx;
 
@@ -24,9 +27,14 @@ class World {
             this.ctx.drawImage(enemy.img, enemy.x, enemy.y, enemy.width, enemy.height);
         });
 
+                this.lights.forEach(light => {
+            this.ctx.drawImage(light.img, light.x, light.y, light.width, light.height);
+        });
+
+
         //draw() wird immer wieder aufgerufen
         let self = this;
-        requestAnimationFrame(function() {
+        requestAnimationFrame(function () {
             self.draw();
         });
 
