@@ -10,6 +10,7 @@ class World {
         new Light()
     ]
     backgroundObjects = [
+        new BackgroundObject('img/3. Background/Layers/5. Water/L1.png', 0),
         new BackgroundObject('img/3. Background/Layers/4.Fondo 2/L1.png', 0),
         new BackgroundObject('img/3. Background/Layers/3.Fondo 1/L1.png', 0),
         new BackgroundObject('img/3. Background/Layers/2. Floor/L1.png', 0)
