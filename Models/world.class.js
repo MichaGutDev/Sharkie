@@ -10,7 +10,7 @@ class World {
         new Light()
     ]
     backgroundObjects = [
-        new BackgroundObject('img/3. Background/Layers/4.Fondo 2/L1.png', 0, 80)
+        new BackgroundObject('img/3. Background/Layers/4.Fondo 2/L1.png', 0)
     ]
     canvas;
     ctx;
