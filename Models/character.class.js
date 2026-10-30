@@ -24,6 +24,7 @@ class Character extends MovableObject {
         'img/1.Sharkie/1.IDLE/17.png',
         'img/1.Sharkie/1.IDLE/18.png'
     ]
+    world;
     
 
     constructor() {
