@@ -1,10 +1,29 @@
 class JellyFish extends MovableObject {
-    
-        constructor() {
+
+    IMAGES_MOVE = [
+        'img/2.Enemy/2 Jelly fish/Regular damage/Lila 1.png',
+        'img/2.Enemy/2 Jelly fish/Regular damage/Lila 2.png',
+        'img/2.Enemy/2 Jelly fish/Regular damage/Lila 3.png',
+        'img/2.Enemy/2 Jelly fish/Regular damage/Lila 4.png'
+    ];
+
+    constructor() {
         super().loadImage('img/2.Enemy/2 Jelly fish/Regular damage/Lila 1.png')
+        this.loadImages(this.IMAGES_MOVE);
 
         this.x = 200 + Math.random() * 500;
         this.y = Math.random() * 400;
+        this.animate();
     }
+
+    animate() {
+        setInterval(() => {
+            let i = this.currentImage % this.IMAGES_MOVE.length;
+            let path = this.IMAGES_MOVE[i];
+            this.img = this.imageCache[path];
+            this.currentImage++;
+        }, 350);
+    }
+
 
 }
