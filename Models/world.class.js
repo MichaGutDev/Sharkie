@@ -4,18 +4,17 @@ class World {
         new JellyFish(),
         new JellyFish(),
         new JellyFish()
-    ]
+    ];
 
     lights = [
         new Light()
-    ]
+    ];
     backgroundObjects = [
         new BackgroundObject('img/3. Background/Layers/5. Water/L1.png', 0),
         new BackgroundObject('img/3. Background/Layers/4.Fondo 2/L1.png', 0),
         new BackgroundObject('img/3. Background/Layers/3.Fondo 1/L1.png', 0),
         new BackgroundObject('img/3. Background/Layers/2. Floor/L1.png', 0)
-
-    ]
+    ];
     canvas;
     ctx;
     keyboard;
@@ -25,8 +24,8 @@ class World {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
         this.keyboard = keyboard;
-        this.draw();
         this.setWorld();
+        this.draw();
     }
 
 
@@ -51,7 +50,6 @@ class World {
         requestAnimationFrame(function () {
             self.draw();
         });
-
     }
 
 
@@ -63,6 +61,6 @@ class World {
 
 
     addToMap(mo) {
-        this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height)
+        this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height);
     }
 }

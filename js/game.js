@@ -4,10 +4,9 @@ let keyboard = new Keyboard();
 
 function init() {
     canvas = document.getElementById('canvas');
-    world = new World(canvas, keyboard)
+    world = new World(canvas, keyboard);
 
     console.log('My Character is', world.character);
-
 }
 
 
@@ -21,7 +20,6 @@ function setKey(event, isPressed) {
         case 'KeyD': keyboard.D = isPressed; break;
     }
     console.log(keyboard);
-    
 }
 
 

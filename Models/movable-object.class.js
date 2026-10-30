@@ -2,7 +2,7 @@ class MovableObject {
     x = 120;
     y = 250;
     img;
-    height = 100;
+    height = 114;
     width = 80;
     imageCache = {};
     currentImage = 0;
@@ -24,13 +24,10 @@ class MovableObject {
             img.src = path;
             this.imageCache[path] = img;
         });
-
-
     }
 
     moveRight() {
         console.log('Moving right');
-
     }
 
     moveLeft() {
