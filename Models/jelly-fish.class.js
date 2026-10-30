@@ -13,10 +13,13 @@ class JellyFish extends MovableObject {
 
         this.x = 200 + Math.random() * 500;
         this.y = Math.random() * 400;
+        this.speed = 0.15 + Math.random() * 0.25;
         this.animate();
     }
 
     animate() {
+        this.moveLeft();
+
         setInterval(() => {
             let i = this.currentImage % this.IMAGES_MOVE.length;
             let path = this.IMAGES_MOVE[i];
