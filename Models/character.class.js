@@ -4,6 +4,7 @@ class Character extends MovableObject {
     height = this.width * 1.227;
     x = 20;
     y = 100;
+    speed = 4;
     IMAGES_IDLE = [
         'img/1.Sharkie/1.IDLE/1.png',
         'img/1.Sharkie/1.IDLE/2.png',
@@ -37,10 +38,30 @@ class Character extends MovableObject {
 
     animate() {
         setInterval(() => {
+            if (this.world.keyboard.RIGHT) {
+                this.x += this.speed;
+            }
+
+            if (this.world.keyboard.LEFT) {
+                this.x -= this.speed;
+            }
+
+            if (this.world.keyboard.UP) {
+                this.y -= this.speed;
+            }
+
+            if (this.world.keyboard.DOWN) {
+                this.y += this.speed;
+            }
+
+        }, 1000 / 60);
+
+        setInterval(() => {
             let i = this.currentImage % this.IMAGES_IDLE.length;
             let path = this.IMAGES_IDLE[i];
             this.img = this.imageCache[path];
             this.currentImage++;
         }, 250);
+
     }
 }
