@@ -4,9 +4,8 @@ class Light extends MovableObject {
     height = 480;
 
 
-    constructor() {
-        super().loadImage('img/3. Background/Layers/1. Light/1.png');
-
-        this.x = Math.random() * 500;
+    constructor(imagePath, x) {
+        super().loadImage(imagePath);
+        this.x = x;
     }
 }
