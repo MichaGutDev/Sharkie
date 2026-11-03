@@ -19,7 +19,6 @@ function setKey(event, isPressed) {
         case 'Space': keyboard.SPACE = isPressed; break;
         case 'KeyD': keyboard.D = isPressed; break;
     }
-    console.log(keyboard);
 }
 
 
