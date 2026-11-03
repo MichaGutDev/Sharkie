@@ -1,20 +1,8 @@
 class World {
     character = new Character();
-    enemies = [
-        new JellyFish(),
-        new JellyFish(),
-        new JellyFish()
-    ];
-
-    lights = [
-        new Light()
-    ];
-    backgroundObjects = [
-        new BackgroundObject('img/3. Background/Layers/5. Water/L1.png', 0),
-        new BackgroundObject('img/3. Background/Layers/4.Fondo 2/L1.png', 0),
-        new BackgroundObject('img/3. Background/Layers/3.Fondo 1/L1.png', 0),
-        new BackgroundObject('img/3. Background/Layers/2. Floor/L1.png', 0)
-    ];
+    enemies = level1.enemies;
+    lights = level1.lights;
+    backgroundObjects = level1.backgroundObjects;
     canvas;
     ctx;
     keyboard;
