@@ -4,15 +4,18 @@ const SECTION_WIDTH = 719;
 const LEVEL_END_X = SECTIONS * SECTION_WIDTH - 620; // 620 = canvas width (720) - camera offset (100)
 
 
+function getSectionPart(index, evenPart, oddPart) {
+    if (index % 2 == 0) {
+        return evenPart;
+    }
+    return oddPart;
+}
+
+
 function createBackground(sections) {
     let objects = [];
     for (let index = 0; index < sections; index++) {
-        let part;
-        if (index % 2 == 0) {
-            part = 'L1';
-        } else {
-            part = 'L2';
-        }
+        let part = getSectionPart(index, 'L1', 'L2');
         LAYERS.forEach(layer => {
             objects.push(new BackgroundObject(`img/3. Background/Layers/${layer}/${part}.png`, index * SECTION_WIDTH));
         });
@@ -24,12 +27,7 @@ function createBackground(sections) {
 function createLights(sections) {
     let lights = [];
     for (let index = 0; index < sections; index++) {
-        let part;
-        if (index % 2 == 0) {
-            part = '1';
-        } else {
-            part = '2';
-        }
+        let part = getSectionPart(index, '1', '2');
         lights.push(new Light(`img/3. Background/Layers/1. Light/${part}.png`, index * SECTION_WIDTH));
     }
     return lights;
