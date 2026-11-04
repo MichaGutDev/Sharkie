@@ -1,7 +1,8 @@
 const LAYERS = ['5. Water', '4.Fondo 2', '3.Fondo 1', '2. Floor'];
 const SECTIONS = 6;
 const SECTION_WIDTH = 719;
-const LEVEL_END_X = SECTIONS * SECTION_WIDTH - 620; // 620 = canvas width (720) - camera offset (100)
+const WORLD_WIDTH = SECTIONS * SECTION_WIDTH;   // 4314
+const LEVEL_END_X = WORLD_WIDTH - 450;   // how far Sharkie can swim
 
 
 function getSectionPart(index, evenPart, oddPart) {

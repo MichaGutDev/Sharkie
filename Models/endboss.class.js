@@ -2,7 +2,7 @@ class Endboss extends MovableObject {
 
     width = 300;
     height = this.width * 1.168;   // keep image ratio (1041 x 1216)
-    x = LEVEL_END_X + 250;   // visible at the end of the level
+    x = WORLD_WIDTH - 370;   // visible at the end of the level
     y = 30;
 
     IMAGES_FLOATING = [
