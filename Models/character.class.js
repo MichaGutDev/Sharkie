@@ -25,6 +25,14 @@ class Character extends MovableObject {
         'img/1.Sharkie/1.IDLE/17.png',
         'img/1.Sharkie/1.IDLE/18.png'
     ];
+
+    IMAGES_SWIMM = [
+        'img/1.Sharkie/3.Swim/1.png',
+        'img/1.Sharkie/3.Swim/2.png',
+        'img/1.Sharkie/3.Swim/3.png',
+        'img/1.Sharkie/3.Swim/5.png',
+        'img/1.Sharkie/3.Swim/6.png',
+    ]
     world;
 
 
@@ -37,31 +45,46 @@ class Character extends MovableObject {
 
 
     animate() {
-        setInterval(() => {
-            if (this.world.keyboard.RIGHT  && this.x < this.world.level.level_end_x) {
-                this.x += this.speed;
-                this.otherDirection = false;
-            }
-
-            if (this.world.keyboard.LEFT && this.x > 0) {
-                this.x -= this.speed;
-                this.otherDirection = true;
-            }
-
-            if (this.world.keyboard.UP) {
-                this.y -= this.speed;
-            }
-
-            if (this.world.keyboard.DOWN) {
-                this.y += this.speed;
-            }
-
-            this.world.camera_x = Math.max(-(WORLD_WIDTH - 720), Math.min(0, -this.x + 100));
-        }, 1000 / 60);
+        setInterval(() => this.moveCharacter(), 1000 / 60);
 
         setInterval(() => {
             this.playAnimation(this.IMAGES_IDLE);
         }, 250);
+    }
 
+
+    moveCharacter() {
+        this.moveHorizontal();
+        this.moveVertikal();
+        this.updateCamera();
+    }
+
+
+    moveHorizontal() {
+        if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
+            this.x += this.speed;
+            this.otherDirection = false;
+        }
+
+        if (this.world.keyboard.LEFT && this.x > 0) {
+            this.x -= this.speed;
+            this.otherDirection = true;
+        }
+    }
+
+
+    moveVertikal() {
+        if (this.world.keyboard.UP) {
+            this.y -= this.speed;
+        }
+
+        if (this.world.keyboard.DOWN) {
+            this.y += this.speed;
+        }
+    }
+
+
+    updateCamera() {
+        this.world.camera_x = Math.max(-(WORLD_WIDTH - 720), Math.min(0, -this.x + 100));
     }
 }
