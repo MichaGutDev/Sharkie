@@ -36,9 +36,11 @@ class Character extends MovableObject {
     world;
     lastFrameTime = 0;
 
+
     constructor() {
         super().loadImage('img/1.Sharkie/1.IDLE/1.png');
         this.loadImages(this.IMAGES_IDLE);
+        this.loadImages(this.IMAGES_SWIM);
 
         this.animate();
     }
@@ -62,7 +64,16 @@ class Character extends MovableObject {
 
 
     getAnimation() {
+        if (this.isMoving()) {
+            return { images: this.IMAGES_SWIM, speed: 120 };
+        }
         return { images: this.IMAGES_IDLE, speed: 250 };
+    }
+
+
+    isMoving() {
+        let keyboard = this.world.keyboard;
+        return keyboard.RIGHT || keyboard.LEFT || keyboard.UP || keyboard.DOWN;
     }
 
 
