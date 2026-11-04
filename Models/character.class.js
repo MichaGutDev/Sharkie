@@ -26,15 +26,15 @@ class Character extends MovableObject {
         'img/1.Sharkie/1.IDLE/18.png'
     ];
 
-    IMAGES_SWIMM = [
+    IMAGES_SWIM = [
         'img/1.Sharkie/3.Swim/1.png',
         'img/1.Sharkie/3.Swim/2.png',
         'img/1.Sharkie/3.Swim/3.png',
         'img/1.Sharkie/3.Swim/5.png',
         'img/1.Sharkie/3.Swim/6.png'
-    ]
+    ];
     world;
-
+    lastFrameTime = 0;
 
     constructor() {
         super().loadImage('img/1.Sharkie/1.IDLE/1.png');
@@ -46,10 +46,23 @@ class Character extends MovableObject {
 
     animate() {
         setInterval(() => this.moveCharacter(), 1000 / 60);
+        this.animateImages();
+    }
 
+
+    animateImages() {
         setInterval(() => {
-            this.playAnimation(this.IMAGES_IDLE);
-        }, 250);
+            let animation = this.getAnimation();
+            if (Date.now() - this.lastFrameTime >= animation.speed) {
+                this.playAnimation(animation.images);
+                this.lastFrameTime = Date.now();
+            }
+        }, 25);
+    }
+
+
+    getAnimation() {
+        return { images: this.IMAGES_IDLE, speed: 250 };
     }
 
 
