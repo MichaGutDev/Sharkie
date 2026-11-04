@@ -57,15 +57,10 @@ class Character extends MovableObject {
             }
 
             this.world.camera_x = Math.min(0, -this.x + 100);
-
-
         }, 1000 / 60);
 
         setInterval(() => {
-            let i = this.currentImage % this.IMAGES_IDLE.length;
-            let path = this.IMAGES_IDLE[i];
-            this.img = this.imageCache[path];
-            this.currentImage++;
+            this.playAnimation(this.IMAGES_IDLE);
         }, 250);
 
     }
