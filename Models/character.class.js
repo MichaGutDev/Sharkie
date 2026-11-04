@@ -31,7 +31,7 @@ class Character extends MovableObject {
         'img/1.Sharkie/3.Swim/2.png',
         'img/1.Sharkie/3.Swim/3.png',
         'img/1.Sharkie/3.Swim/5.png',
-        'img/1.Sharkie/3.Swim/6.png',
+        'img/1.Sharkie/3.Swim/6.png'
     ]
     world;
 
@@ -55,7 +55,7 @@ class Character extends MovableObject {
 
     moveCharacter() {
         this.moveHorizontal();
-        this.moveVertikal();
+        this.moveVertical();
         this.updateCamera();
     }
 
@@ -73,7 +73,7 @@ class Character extends MovableObject {
     }
 
 
-    moveVertikal() {
+    moveVertical() {
         if (this.world.keyboard.UP) {
             this.y -= this.speed;
         }
