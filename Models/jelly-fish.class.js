@@ -1,4 +1,4 @@
-class JellyFish extends MovableObject {
+class JellyFish extends Enemy {
 
     IMAGES_MOVE = [
         'img/2.Enemy/2 Jelly fish/Regular damage/Lila 1.png',

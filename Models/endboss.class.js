@@ -1,4 +1,4 @@
-class Endboss extends MovableObject {
+class Endboss extends Enemy {
 
     width = 300;
     height = this.width * 1.168;   // keep image ratio (1041 x 1216)

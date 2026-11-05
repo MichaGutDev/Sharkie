@@ -1,4 +1,4 @@
-class PufferFish extends MovableObject {
+class PufferFish extends Enemy {
 
     width = 100;
     height = this.width * 0.822;   // keep image ratio (241 x 198)
