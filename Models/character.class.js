@@ -5,6 +5,12 @@ class Character extends MovableObject {
     x = 0;
     y = 100;
     speed = 4;
+    offset = {
+        top: 150,
+        left: 90,
+        right: 55,
+        bottom: 80
+    };
     IMAGES_IDLE = [
         'img/1.Sharkie/1.IDLE/1.png',
         'img/1.Sharkie/1.IDLE/2.png',

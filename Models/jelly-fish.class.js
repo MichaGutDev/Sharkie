@@ -1,5 +1,11 @@
 class JellyFish extends Enemy {
 
+    offset = {
+        top: 20,
+        left: 5,
+        right: 5,
+        bottom: 20
+    };
     IMAGES_MOVE = [
         'img/2.Enemy/2 Jelly fish/Regular damage/Lila 1.png',
         'img/2.Enemy/2 Jelly fish/Regular damage/Lila 2.png',

@@ -2,6 +2,12 @@ class PufferFish extends Enemy {
 
     width = 100;
     height = this.width * 0.822;   // keep image ratio (241 x 198)
+    offset = {
+        top: 8,
+        left: 5,
+        right: 20,
+        bottom: 22
+    };
     IMAGES_MOVE = [
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png',
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim2.png',

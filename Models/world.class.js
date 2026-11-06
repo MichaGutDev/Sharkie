@@ -28,9 +28,9 @@ class World {
                 if (this.character.isColliding(enemy)) {
                     console.log('collision with Character', enemy);
 
-                };
+                }
             });
-        }, 200)
+        }, 200);
     }
 
 

@@ -4,7 +4,12 @@ class Endboss extends Enemy {
     height = this.width * 1.168;   // keep image ratio (1041 x 1216)
     x = WORLD_WIDTH - 370;   // visible at the end of the level
     y = 30;
-
+    offset = {
+        top: 140,
+        left: 25,
+        right: 30,
+        bottom: 70
+    };
     IMAGES_FLOATING = [
         'img/2.Enemy/3 Final Enemy/2.floating/1.png',
         'img/2.Enemy/3 Final Enemy/2.floating/2.png',
