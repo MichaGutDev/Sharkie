@@ -47,7 +47,7 @@ class Character extends MovableObject {
         'img/1.Sharkie/2.Long_IDLE/i12.png',
         'img/1.Sharkie/2.Long_IDLE/i13.png',
         'img/1.Sharkie/2.Long_IDLE/i14.png'
-    ]
+    ];
 
     IMAGES_SWIM = [
         'img/1.Sharkie/3.Swim/1.png',
@@ -56,6 +56,22 @@ class Character extends MovableObject {
         'img/1.Sharkie/3.Swim/5.png',
         'img/1.Sharkie/3.Swim/6.png'
     ];
+
+    IMAGES_DEAD = [
+        'img/1.Sharkie/6.dead/1.Poisoned/1.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/2.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/3.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/4.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/5.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/6.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/7.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/8.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/9.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/10.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/11.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/12.png'
+    ];
+
     world;
     lastFrameTime = 0;
 
@@ -64,6 +80,7 @@ class Character extends MovableObject {
         super().loadImage('img/1.Sharkie/1.IDLE/1.png');
         this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_SWIM);
+        this.loadImages(this.IMAGES_DEAD);
 
         this.animate();
     }
@@ -87,6 +104,9 @@ class Character extends MovableObject {
 
 
     getAnimation() {
+        if (this.isDead()) {
+            return { images: this.IMAGES_DEAD, speed: 120 };
+        }
         if (this.isMoving()) {
             return { images: this.IMAGES_SWIM, speed: 120 };
         }

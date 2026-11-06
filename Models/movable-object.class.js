@@ -98,6 +98,11 @@ class MovableObject {
     }
 
 
+    isDead() {
+        return this.energy == 0;
+    }
+
+
     getOffsetLeft() {
         if (this.otherDirection) {
             return this.offset.right;
