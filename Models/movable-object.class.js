@@ -14,6 +14,7 @@ class MovableObject {
         right: 0,
         bottom: 0
     };
+    energy = 100;
 
     loadImage(path) {
         this.img = new Image();
@@ -89,6 +90,14 @@ class MovableObject {
     }
 
 
+        hit() {
+        this.energy -= 5;
+        if (this.energy < 0) {
+            this.energy = 0;
+        }
+    }
+
+
     getOffsetLeft() {
         if (this.otherDirection) {
             return this.offset.right;
@@ -103,4 +112,6 @@ class MovableObject {
         }
         return this.offset.right;
     }
+
+
 }
