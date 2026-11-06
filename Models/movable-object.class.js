@@ -38,9 +38,9 @@ class MovableObject {
             ctx.lineWidth = '2';
             ctx.strokeStyle = 'red';
             ctx.rect(
-                this.x + this.offset.left,
+                this.x + this.getOffsetLeft(),
                 this.y + this.offset.top,
-                this.width - this.offset.left - this.offset.right,
+                this.width - this.getOffsetLeft() - this.getOffsetRight(),
                 this.height - this.offset.top - this.offset.bottom
             );
             ctx.stroke();
@@ -82,9 +82,25 @@ class MovableObject {
 
 
     isColliding(mo) {
-        return this.x + this.width - this.offset.right > mo.x + mo.offset.left &&
+        return this.x + this.width - this.getOffsetRight() > mo.x + mo.getOffsetLeft() &&
             this.y + this.height - this.offset.bottom > mo.y + mo.offset.top &&
-            this.x + this.offset.left < mo.x + mo.width - mo.offset.right &&
+            this.x + this.getOffsetLeft() < mo.x + mo.width - mo.getOffsetRight() &&
             this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom;
+    }
+
+
+    getOffsetLeft() {
+        if (this.otherDirection) {
+            return this.offset.right;
+        }
+        return this.offset.left;
+    }
+
+
+    getOffsetRight() {
+        if (this.otherDirection) {
+            return this.offset.left;
+        }
+        return this.offset.right;
     }
 }
