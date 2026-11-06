@@ -57,6 +57,13 @@ class Character extends MovableObject {
         'img/1.Sharkie/3.Swim/6.png'
     ];
 
+    IMAGES_HURT = [
+        'img/1.Sharkie/5.Hurt/1.Poisoned/1.png',
+        'img/1.Sharkie/5.Hurt/1.Poisoned/2.png',
+        'img/1.Sharkie/5.Hurt/1.Poisoned/3.png',
+        'img/1.Sharkie/5.Hurt/1.Poisoned/4.png'
+    ];
+
     IMAGES_DEAD = [
         'img/1.Sharkie/6.dead/1.Poisoned/1.png',
         'img/1.Sharkie/6.dead/1.Poisoned/2.png',
@@ -81,6 +88,7 @@ class Character extends MovableObject {
         this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_SWIM);
         this.loadImages(this.IMAGES_DEAD);
+        this.loadImages(this.IMAGES_HURT);
 
         this.animate();
     }
@@ -106,6 +114,9 @@ class Character extends MovableObject {
     getAnimation() {
         if (this.isDead()) {
             return { images: this.IMAGES_DEAD, speed: 120 };
+        }
+        if (this.isHurt()) {
+            return { images: this.IMAGES_HURT, speed: 120 };
         }
         if (this.isMoving()) {
             return { images: this.IMAGES_SWIM, speed: 120 };

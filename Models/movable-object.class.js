@@ -15,6 +15,7 @@ class MovableObject {
         bottom: 0
     };
     energy = 100;
+    lastHit = 0;
 
     loadImage(path) {
         this.img = new Image();
@@ -90,11 +91,17 @@ class MovableObject {
     }
 
 
-        hit() {
+    hit() {
         this.energy -= 5;
         if (this.energy < 0) {
             this.energy = 0;
         }
+        this.lastHit = Date.now();
+    }
+
+
+    isHurt() {
+        return Date.now() - this.lastHit < 1000;
     }
 
 
