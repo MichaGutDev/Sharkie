@@ -5,6 +5,7 @@ class World {
     ctx;
     keyboard;
     camera_x = 0;
+    lifeBar = new StatusBar('life', 0);
 
 
     constructor(canvas, keyboard) {
@@ -44,7 +45,9 @@ class World {
         this.addObjectsToMap(this.level.lights);
         this.addObjectsToMap(this.level.enemies);
 
-        this.ctx.translate(-this.camera_x, 0)
+        this.ctx.translate(-this.camera_x, 0);
+
+        this.addToMap(this.lifeBar);
 
         //draw() wird immer wieder aufgerufen
         let self = this;

@@ -26,4 +26,26 @@ class DrawableObject {
             this.imageCache[path] = img;
         });
     }
+
+
+    drawFrame(ctx) {
+        if (this instanceof Character || this instanceof Enemy) {
+            ctx.beginPath();
+            ctx.lineWidth = '5';
+            ctx.strokeStyle = 'blue';
+            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.lineWidth = '2';
+            ctx.strokeStyle = 'red';
+            ctx.rect(
+                this.x + this.getOffsetLeft(),
+                this.y + this.offset.top,
+                this.width - this.getOffsetLeft() - this.getOffsetRight(),
+                this.height - this.offset.top - this.offset.bottom
+            );
+            ctx.stroke();
+        }
+    }
 }
