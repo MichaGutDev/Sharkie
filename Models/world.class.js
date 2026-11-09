@@ -48,7 +48,7 @@ class World {
 
         this.ctx.translate(-this.camera_x, 0);
 
-        this.addToMap(this.lifeBar);
+        this.drawStatusBars();
 
         //draw() wird immer wieder aufgerufen
         let self = this;
@@ -82,11 +82,16 @@ class World {
         this.ctx.translate(mo.width, 0);
         this.ctx.scale(-1, 1);
         mo.x = mo.x * -1;
-    };
+    }
 
 
     flipImageBack(mo) {
         mo.x = mo.x * -1;
         this.ctx.restore();
-    };
+    }
+
+
+    drawStatusBars() {
+        this.addToMap(this.lifeBar);
+    }
 }
