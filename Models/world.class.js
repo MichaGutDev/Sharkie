@@ -5,9 +5,9 @@ class World {
     ctx;
     keyboard;
     camera_x = 0;
-    lifeBar = new StatusBar('life', 0, 100);
-    coinBar = new StatusBar('coin', 45, 0);
-    poisonBar = new StatusBar('poison', 90, 0);
+    lifeBar = new StatusBar('life', 40, 100);
+    coinBar = new StatusBar('coin', 80, 0);
+    poisonBar = new StatusBar('poison', 0, 0);
 
 
     constructor(canvas, keyboard) {

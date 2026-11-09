@@ -1,30 +1,30 @@
 class StatusBar extends DrawableObject {
 
     IMAGES_LIFE = [
-        'img/4. Marcadores/green/Life/0Life.png',
-        'img/4. Marcadores/green/Life/20Life.png',
-        'img/4. Marcadores/green/Life/40Life.png',
-        'img/4. Marcadores/green/Life/60Life.png',
-        'img/4. Marcadores/green/Life/80Life.png',
-        'img/4. Marcadores/green/Life/100Life.png'
+        'img/4. Marcadores/orange/Life/0Life.png',
+        'img/4. Marcadores/orange/Life/20Life.png',
+        'img/4. Marcadores/orange/Life/40Life.png',
+        'img/4. Marcadores/orange/Life/60Life.png',
+        'img/4. Marcadores/orange/Life/80Life.png',
+        'img/4. Marcadores/orange/Life/100Life.png'
     ];
 
     IMAGES_COIN = [
-        'img/4. Marcadores/green/Coin/0Coin.png',
-        'img/4. Marcadores/green/Coin/20Coin.png',
-        'img/4. Marcadores/green/Coin/40Coin.png',
-        'img/4. Marcadores/green/Coin/60Coin.png',
-        'img/4. Marcadores/green/Coin/80Coin.png',
-        'img/4. Marcadores/green/Coin/100Coin.png'
+        'img/4. Marcadores/orange/Coin/0Coin.png',
+        'img/4. Marcadores/orange/Coin/20Coin.png',
+        'img/4. Marcadores/orange/Coin/40Coin.png',
+        'img/4. Marcadores/orange/Coin/60Coin.png',
+        'img/4. Marcadores/orange/Coin/80Coin.png',
+        'img/4. Marcadores/orange/Coin/100Coin.png'
     ];
 
     IMAGES_POISON = [
-        'img/4. Marcadores/green/poisoned bubbles/0Bubbles.png',
-        'img/4. Marcadores/green/poisoned bubbles/20Bubbles.png',
-        'img/4. Marcadores/green/poisoned bubbles/40Bubbles.png',
-        'img/4. Marcadores/green/poisoned bubbles/60Bubbles.png',
-        'img/4. Marcadores/green/poisoned bubbles/80Bubbles.png',
-        'img/4. Marcadores/green/poisoned bubbles/100Bubbles.png'
+        'img/4. Marcadores/orange/poisoned bubbles/0Bubbles.png',
+        'img/4. Marcadores/orange/poisoned bubbles/20Bubbles.png',
+        'img/4. Marcadores/orange/poisoned bubbles/40Bubbles.png',
+        'img/4. Marcadores/orange/poisoned bubbles/60Bubbles.png',
+        'img/4. Marcadores/orange/poisoned bubbles/80Bubbles.png',
+        'img/4. Marcadores/orange/poisoned bubbles/100Bubbles.png'
     ];
 
     x = 10;
