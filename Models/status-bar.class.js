@@ -18,6 +18,15 @@ class StatusBar extends DrawableObject {
         'img/4. Marcadores/green/Coin/100Coin.png'
     ];
 
+    IMAGES_POISON = [
+        'img/4. Marcadores/green/poisoned bubbles/0Bubbles.png',
+        'img/4. Marcadores/green/poisoned bubbles/20Bubbles.png',
+        'img/4. Marcadores/green/poisoned bubbles/40Bubbles.png',
+        'img/4. Marcadores/green/poisoned bubbles/60Bubbles.png',
+        'img/4. Marcadores/green/poisoned bubbles/80Bubbles.png',
+        'img/4. Marcadores/green/poisoned bubbles/100Bubbles.png'
+    ];
+
     x = 10;
     width = 200;
     height = this.width * 0.266;
@@ -51,6 +60,9 @@ class StatusBar extends DrawableObject {
         }
         if (type == 'coin') {
             return this.IMAGES_COIN;
+        }
+        if (type == 'poison') {
+            return this.IMAGES_POISON;
         }
     }
 }

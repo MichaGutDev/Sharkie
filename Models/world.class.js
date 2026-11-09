@@ -7,6 +7,7 @@ class World {
     camera_x = 0;
     lifeBar = new StatusBar('life', 0, 100);
     coinBar = new StatusBar('coin', 45, 0);
+    poisonBar = new StatusBar('poison', 90, 0);
 
 
     constructor(canvas, keyboard) {
@@ -95,5 +96,6 @@ class World {
     drawStatusBars() {
         this.addToMap(this.lifeBar);
         this.addToMap(this.coinBar);
+        this.addToMap(this.poisonBar);
     }
 }
