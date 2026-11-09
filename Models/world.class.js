@@ -5,8 +5,8 @@ class World {
     ctx;
     keyboard;
     camera_x = 0;
-    lifeBar = new StatusBar('life', 0);
-    coinBar = new StatusBar('coin', 45);
+    lifeBar = new StatusBar('life', 0, 100);
+    coinBar = new StatusBar('coin', 45, 0);
 
 
     constructor(canvas, keyboard) {
