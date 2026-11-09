@@ -9,6 +9,15 @@ class StatusBar extends DrawableObject {
         'img/4. Marcadores/green/Life/100Life.png'
     ];
 
+    IMAGES_COIN = [
+        'img/4. Marcadores/green/Coin/0Coin.png',
+        'img/4. Marcadores/green/Coin/20Coin.png',
+        'img/4. Marcadores/green/Coin/40Coin.png',
+        'img/4. Marcadores/green/Coin/60Coin.png',
+        'img/4. Marcadores/green/Coin/80Coin.png',
+        'img/4. Marcadores/green/Coin/100Coin.png'
+    ];
+
     x = 10;
     width = 200;
     height = this.width * 0.266;
@@ -39,6 +48,9 @@ class StatusBar extends DrawableObject {
     getImages(type) {
         if (type == 'life') {
             return this.IMAGES_LIFE;
+        }
+        if (type == 'coin') {
+            return this.IMAGES_COIN;
         }
     }
 }
