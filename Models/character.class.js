@@ -134,6 +134,7 @@ class Character extends MovableObject {
     moveCharacter() {
         this.moveHorizontal();
         this.moveVertical();
+        this.sink();
         this.updateCamera();
     }
 
@@ -152,11 +153,11 @@ class Character extends MovableObject {
 
 
     moveVertical() {
-        if (this.world.keyboard.UP) {
+        if (this.world.keyboard.UP && !this.isAtTop()) {
             this.y -= this.speed;
         }
 
-        if (this.world.keyboard.DOWN) {
+        if (this.world.keyboard.DOWN && !this.isAtBottom()) {
             this.y += this.speed;
         }
     }
@@ -164,5 +165,22 @@ class Character extends MovableObject {
 
     updateCamera() {
         this.world.camera_x = Math.max(-(WORLD_WIDTH - 720), Math.min(0, -this.x + 100));
+    }
+
+
+    sink() {
+        if (!this.isMoving() && !this.isAtBottom()) {
+            this.y += 0.5;
+        }
+    }
+
+
+    isAtBottom() {
+        return this.y + this.height - this.offset.bottom >= this.world.canvas.height;
+    }
+
+
+    isAtTop() {
+        return this.y + this.offset.top <= 0.;
     }
 }
