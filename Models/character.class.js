@@ -181,6 +181,6 @@ class Character extends MovableObject {
 
 
     isAtTop() {
-        return this.y + this.offset.top <= 0.;
+        return this.y + this.offset.top <= 0;
     }
 }

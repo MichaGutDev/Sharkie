@@ -8,6 +8,7 @@ class World {
     lifeBar = new StatusBar('life', 40, 100);
     coinBar = new StatusBar('coin', 80, 0);
     poisonBar = new StatusBar('poison', 0, 0);
+    bubbles = [];
 
 
     constructor(canvas, keyboard) {
@@ -16,7 +17,7 @@ class World {
         this.keyboard = keyboard;
         this.setWorld();
         this.draw();
-        this.checkCollisions();
+        this.run();
     }
 
 
@@ -25,15 +26,29 @@ class World {
     }
 
 
-    checkCollisions() {
+    run() {
         setInterval(() => {
-            this.level.enemies.forEach((enemy) => {
-                if (this.character.isColliding(enemy) && !this.character.isHurt()) {
-                    this.character.hit();
-                    this.lifeBar.setPercentage(this.character.energy);
-                }
-            });
+            this.checkCollisions();
+            this.checkBubble();
         }, 200);
+    }
+
+
+    checkBubble() {
+        if (this.keyboard.D) {
+            let bubble = new Bubble(this.character.x + 190, this.character.y + 165);
+            this.bubbles.push(bubble);
+        }
+    }
+
+
+    checkCollisions() {
+        this.level.enemies.forEach((enemy) => {
+            if (this.character.isColliding(enemy) && !this.character.isHurt()) {
+                this.character.hit();
+                this.lifeBar.setPercentage(this.character.energy);
+            }
+        });
     }
 
 
@@ -47,6 +62,7 @@ class World {
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.lights);
         this.addObjectsToMap(this.level.enemies);
+        this.addObjectsToMap(this.bubbles);
 
         this.ctx.translate(-this.camera_x, 0);
 
