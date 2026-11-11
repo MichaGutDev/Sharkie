@@ -81,6 +81,7 @@ class Character extends MovableObject {
 
     world;
     lastFrameTime = 0;
+    currentAnimation;
 
 
     constructor() {
@@ -103,17 +104,31 @@ class Character extends MovableObject {
     animateImages() {
         setInterval(() => {
             let animation = this.getAnimation();
+            this.checkAnimationChange(animation);
             if (Date.now() - this.lastFrameTime >= animation.speed) {
-                this.playAnimation(animation.images);
+                if (animation.once) {
+                    this.playAnimationOnce(animation.images);
+                } else {
+                    this.playAnimation(animation.images);
+                }
                 this.lastFrameTime = Date.now();
             }
         }, 25);
     }
 
 
+    checkAnimationChange(animation) {
+        if (animation.images != this.currentAnimation) {
+            this.currentImage = 0;
+            this.isAnimationDone = false;
+            this.currentAnimation = animation.images;
+        }
+    }
+
+
     getAnimation() {
         if (this.isDead()) {
-            return { images: this.IMAGES_DEAD, speed: 120 };
+            return { images: this.IMAGES_DEAD, speed: 120, once: true };
         }
         if (this.isHurt()) {
             return { images: this.IMAGES_HURT, speed: 120 };

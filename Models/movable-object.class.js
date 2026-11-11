@@ -9,13 +9,25 @@ class MovableObject extends DrawableObject {
     };
     energy = 100;
     lastHit = 0;
-    
+    isAnimationDone = false;
+
 
     playAnimation(images) {
         let index = this.currentImage % images.length;
         let path = images[index];
         this.img = this.imageCache[path];
         this.currentImage++;
+    }
+
+
+    playAnimationOnce(images) {
+        let path = images[this.currentImage];
+        this.img = this.imageCache[path];
+        if (this.currentImage < images.length - 1) {
+            this.currentImage++;
+        } else {
+            this.isAnimationDone = true;
+        }
     }
 
 
