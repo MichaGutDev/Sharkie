@@ -199,7 +199,12 @@ class Character extends MovableObject {
 
 
     updateCamera() {
-        this.world.camera_x = Math.max(-(WORLD_WIDTH - 720), Math.min(0, -this.x + 100));
+        let offset = 100;
+        if (this.otherDirection) {
+            offset = 370;
+        }
+        let target = Math.max(-(WORLD_WIDTH - 720), Math.min(0, -this.x + offset));
+        this.world.camera_x += (target - this.world.camera_x) * 0.1;
     }
 
 
