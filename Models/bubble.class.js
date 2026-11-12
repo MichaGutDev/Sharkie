@@ -6,10 +6,13 @@ class Bubble extends MovableObject {
     speedY = 0;
 
 
-    constructor(x, y) {
+    constructor(x, y, otherDirection) {
         super().loadImage('img/1.Sharkie/4.Attack/Bubble trap/Bubble.png');
         this.x = x;
         this.y = y;
+        if (otherDirection) {
+            this.speedX = -this.speedX;
+        }
         this.float();
     }
 

@@ -39,7 +39,12 @@ class World {
 
     checkBubble() {
         if (this.keyboard.D) {
-            let bubble = new Bubble(this.character.x + 190, this.character.y + 165);
+            let character = this.character;
+            let x = character.x + 190;
+            if (character.otherDirection) {
+                x = character.x + 20;
+            }
+            let bubble = new Bubble(x, character.y + 165, character.otherDirection);
             this.bubbles.push(bubble);
         }
     }
