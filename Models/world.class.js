@@ -9,6 +9,7 @@ class World {
     coinBar = new StatusBar('coin', 80, 0);
     poisonBar = new StatusBar('poison', 0, 0);
     bubbles = [];
+    lastBubble = 0;
 
 
     constructor(canvas, keyboard) {
@@ -38,7 +39,7 @@ class World {
 
 
     checkBubble() {
-        if (this.keyboard.D) {
+        if (this.keyboard.D && Date.now() - this.lastBubble > 600) {
             let character = this.character;
             let x = character.x + 190;
             if (character.otherDirection) {
@@ -46,6 +47,7 @@ class World {
             }
             let bubble = new Bubble(x, character.y + 165, character.otherDirection);
             this.bubbles.push(bubble);
+            this.lastBubble = Date.now();
         }
     }
 
