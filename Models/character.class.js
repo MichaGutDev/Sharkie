@@ -64,6 +64,17 @@ class Character extends MovableObject {
         'img/1.Sharkie/5.Hurt/1.Poisoned/4.png'
     ];
 
+    IMAGES_BUBBLE_TRAP = [
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/1.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/2.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/3.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/4.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/5.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/6.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/7.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/8.png'
+    ];
+
     IMAGES_DEAD = [
         'img/1.Sharkie/6.dead/1.Poisoned/1.png',
         'img/1.Sharkie/6.dead/1.Poisoned/2.png',
@@ -82,6 +93,7 @@ class Character extends MovableObject {
     world;
     lastFrameTime = 0;
     currentAnimation;
+    isShootingBubble = false;
 
 
     constructor() {
@@ -90,6 +102,7 @@ class Character extends MovableObject {
         this.loadImages(this.IMAGES_SWIM);
         this.loadImages(this.IMAGES_DEAD);
         this.loadImages(this.IMAGES_HURT);
+        this.loadImages(this.IMAGES_BUBBLE_TRAP);
 
         this.animate();
     }
@@ -111,6 +124,7 @@ class Character extends MovableObject {
                 } else {
                     this.playAnimation(animation.images);
                 }
+                this.checkBubbleDone();
                 this.lastFrameTime = Date.now();
             }
         }, 25);
@@ -132,6 +146,9 @@ class Character extends MovableObject {
         }
         if (this.isHurt()) {
             return { images: this.IMAGES_HURT, speed: 120 };
+        }
+        if (this.isShootingBubble) {
+            return { images: this.IMAGES_BUBBLE_TRAP, speed: 120, once: true };
         }
         if (this.isMoving()) {
             return { images: this.IMAGES_SWIM, speed: 120 };
@@ -200,5 +217,13 @@ class Character extends MovableObject {
 
     isAtTop() {
         return this.y + this.offset.top <= 0;
+    }
+
+
+    checkBubbleDone() {
+        if (this.isShootingBubble && this.isAnimationDone && !this.isDead()) {
+            this.isShootingBubble = false;
+            this.world.createBubble();
+        }
     }
 }

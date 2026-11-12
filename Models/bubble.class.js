@@ -1,8 +1,8 @@
 class Bubble extends MovableObject {
 
-    width = 40;
+    width = 30;
     height = this.width;
-    speedX = 10;
+    speedX = 11;
     speedY = 0;
 
 
@@ -20,7 +20,7 @@ class Bubble extends MovableObject {
     float() {
         setInterval(() => {
             this.x += this.speedX;
-            this.speedX *= 0.96;
+            this.speedX *= 0.98;
             this.speedY += 0.05;
             this.y -= this.speedY;
         }, 1000 / 60);

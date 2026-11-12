@@ -39,16 +39,21 @@ class World {
 
 
     checkBubble() {
-        if (this.keyboard.D && Date.now() - this.lastBubble > 600) {
-            let character = this.character;
-            let x = character.x + 190;
-            if (character.otherDirection) {
-                x = character.x + 20;
-            }
-            let bubble = new Bubble(x, character.y + 165, character.otherDirection);
-            this.bubbles.push(bubble);
+        if (this.keyboard.D && !this.character.isShootingBubble && Date.now() - this.lastBubble > 600) {
+            this.character.isShootingBubble = true;
             this.lastBubble = Date.now();
         }
+    }
+
+
+    createBubble() {
+        let character = this.character;
+        let x = character.x + 190;
+        if (character.otherDirection) {
+            x = character.x + 30;
+        }
+        let bubble = new Bubble(x, character.y + 170, character.otherDirection);
+        this.bubbles.push(bubble);
     }
 
 
