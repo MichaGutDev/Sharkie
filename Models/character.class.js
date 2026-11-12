@@ -147,6 +147,9 @@ class Character extends MovableObject {
 
 
     moveCharacter() {
+        if (this.isDead()) {
+            return;
+        }
         this.moveHorizontal();
         this.moveVertical();
         this.sink();

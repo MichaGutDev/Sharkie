@@ -28,6 +28,9 @@ class World {
 
     run() {
         setInterval(() => {
+            if (this.character.isDead()) {
+                return;
+            }
             this.checkCollisions();
             this.checkBubble();
         }, 200);
