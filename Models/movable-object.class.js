@@ -46,10 +46,7 @@ class MovableObject extends DrawableObject {
 
 
     isColliding(mo) {
-        return this.x + this.width - this.getOffsetRight() > mo.x + mo.getOffsetLeft() &&
-            this.y + this.height - this.offset.bottom > mo.y + mo.offset.top &&
-            this.x + this.getOffsetLeft() < mo.x + mo.width - mo.getOffsetRight() &&
-            this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom;
+        return this.isOverlapping(this.getHitbox(), mo.getHitbox());
     }
 
 
@@ -88,4 +85,23 @@ class MovableObject extends DrawableObject {
     }
 
 
+    getHitbox() {
+        let left = this.x + this.getOffsetLeft();
+        let right = this.x + this.width - this.getOffsetRight();
+
+        return {
+            x: left,
+            y: this.y + this.offset.top,
+            width: right - left,
+            height: this.height - this.offset.top - this.offset.bottom
+        };
+    }
+
+
+    isOverlapping(a, b) {
+        return a.x + a.width > b.x &&
+            a.y + a.height > b.y &&
+            a.x < b.x + b.width &&
+            a.y < b.y + b.height;
+    }
 }
