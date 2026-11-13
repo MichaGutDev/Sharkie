@@ -38,7 +38,9 @@ class MovableObject extends DrawableObject {
 
     moveLeft() {
         setInterval(() => {
-            this.x -= this.speed;
+            if (!this.isDead()) {
+                this.x -= this.speed;
+            }
         }, 1000 / 60);
     }
 

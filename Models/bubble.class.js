@@ -4,6 +4,7 @@ class Bubble extends MovableObject {
     height = this.width;
     speedX = 11;
     speedY = 0;
+    hasHit = false;
 
 
     constructor(x, y, otherDirection) {

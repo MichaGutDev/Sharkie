@@ -34,7 +34,8 @@ class World {
             }
             this.checkCollisions();
             this.checkBubble();
-        }, 200);
+            this.checkBubbleHits();
+        }, 1000 / 60);
     }
 
 
@@ -43,6 +44,19 @@ class World {
             this.character.isShootingBubble = true;
             this.lastBubble = Date.now();
         }
+    }
+
+
+    checkBubbleHits() {
+        this.bubbles.forEach((bubble) => {
+            this.level.enemies.forEach((enemy) => {
+                if (enemy instanceof JellyFish && !enemy.isDead() && bubble.isColliding(enemy)) {
+                    enemy.die();
+                    bubble.hasHit = true;
+                }
+            });
+        });
+        this.bubbles = this.bubbles.filter((bubble) => !bubble.hasHit);
     }
 
 
@@ -59,7 +73,7 @@ class World {
 
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
-            if (this.character.isColliding(enemy) && !this.character.isHurt()) {
+            if (!enemy.isDead() && this.character.isColliding(enemy) && !this.character.isHurt()) {
                 this.character.hit();
                 this.lifeBar.setPercentage(this.character.energy);
             }
