@@ -228,6 +228,8 @@ class Character extends MovableObject {
     checkBubbleDone() {
         if (this.isShootingBubble && this.isAnimationDone && !this.isDead()) {
             this.isShootingBubble = false;
+            this.isAnimationDone = false;
+            this.currentImage = 0;
             this.world.createBubble();
         }
     }
