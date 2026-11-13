@@ -35,6 +35,7 @@ class World {
             this.checkCollisions();
             this.checkBubble();
             this.checkBubbleHits();
+            this.checkFinSlap();
         }, 1000 / 60);
     }
 
@@ -57,6 +58,13 @@ class World {
             });
         });
         this.bubbles = this.bubbles.filter((bubble) => !bubble.hasHit);
+    }
+
+
+    checkFinSlap() {
+        if (this.keyboard.SPACE && !this.character.isFinSlapping) {
+            this.character.isFinSlapping = true;
+        } 
     }
 
 
