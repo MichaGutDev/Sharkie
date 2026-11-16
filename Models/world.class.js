@@ -32,6 +32,7 @@ class World {
             if (this.character.isDead()) {
                 return;
             }
+            this.checkFinSlapHits();
             this.checkCollisions();
             this.checkBubble();
             this.checkBubbleHits();
@@ -64,7 +65,22 @@ class World {
     checkFinSlap() {
         if (this.keyboard.SPACE && !this.character.isFinSlapping) {
             this.character.isFinSlapping = true;
-        } 
+        }
+    }
+
+
+    checkFinSlapHits() {
+        if (!this.character.isFinSlapping) {
+            return;
+        }
+
+        let zone = this.character.getFinSlapZone();
+
+        this.level.enemies.forEach((enemy) => {
+            if (enemy instanceof PufferFish && !enemy.isDead() && this.character.isOverlapping(zone, enemy.getHitbox())) {
+                enemy.die();
+            }
+        });
     }
 
 

@@ -230,11 +230,6 @@ class Character extends MovableObject {
     }
 
 
-    isAtBottom() {
-        return this.y + this.height - this.offset.bottom >= this.world.canvas.height;
-    }
-
-
     isAtTop() {
         return this.y + this.offset.top <= 0;
     }
@@ -256,5 +251,15 @@ class Character extends MovableObject {
             this.isAnimationDone = false;
             this.currentImage = 0;
         }
+    }
+
+
+    getFinSlapZone() {
+        let hitbox = this.getHitbox();
+        hitbox.width += 40;
+        if (this.otherDirection) {
+            hitbox.x -= 40;
+        }
+        return hitbox;
     }
 }

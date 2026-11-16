@@ -104,4 +104,10 @@ class MovableObject extends DrawableObject {
             a.x < b.x + b.width &&
             a.y < b.y + b.height;
     }
+
+
+    isAtBottom() {
+        return this.y + this.height - this.offset.bottom >= canvas.height;
+    }
+
 }
