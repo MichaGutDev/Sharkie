@@ -72,6 +72,8 @@ class PufferFish extends Enemy {
                 this.playAnimationOnce(this.IMAGES_TRANSITION);
             } else if (this.isInflated === true && this.isAnimationDone) {
                 this.playAnimation(this.IMAGES_BUBBLESWIM);
+                this.offset.bottom = 1; // inflated fish fills almost the whole image
+                this.offset.top = 0;
             } else {
                 this.playAnimation(this.IMAGES_MOVE);
             }
