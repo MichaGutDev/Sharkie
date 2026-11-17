@@ -37,6 +37,7 @@ class World {
             this.checkBubble();
             this.checkBubbleHits();
             this.checkFinSlap();
+            this.checkInflate();
         }, 1000 / 60);
     }
 
@@ -79,6 +80,18 @@ class World {
         this.level.enemies.forEach((enemy) => {
             if (enemy instanceof PufferFish && !enemy.isDead() && this.character.isOverlapping(zone, enemy.getHitbox())) {
                 enemy.die();
+            }
+        });
+    }
+
+
+    checkInflate() {
+        let hitbox = this.character.getHitbox();
+
+        this.level.enemies.forEach((enemy) => {
+            if (enemy instanceof PufferFish && !enemy.isDead() && this.character.isOverlapping(hitbox, enemy.getInflateZone()) && !enemy.isInflated) {
+                enemy.isInflated = true;
+                enemy.currentImage = 0;
             }
         });
     }
