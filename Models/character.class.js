@@ -109,6 +109,7 @@ class Character extends MovableObject {
     isFinSlapping = false;
     lastKeyPress = Date.now();
     isAsleep = false;
+    SLEEP_SPACE = 35; // Long Idle sinks Sharkie 35 px in the image
 
 
     constructor() {
@@ -199,6 +200,7 @@ class Character extends MovableObject {
         this.moveHorizontal();
         this.moveVertical();
         this.sink();
+        this.rise();
         this.updateCamera();
         this.checkKeyPress();
     }
@@ -250,14 +252,36 @@ class Character extends MovableObject {
     }
 
 
+    rise() {
+        if (this.y + this.height - this.offset.bottom > this.getBottomLimit()) {
+            this.y -= 0.5;
+        }
+    }
+
+
+    isAtBottom() {
+        return this.y + this.height - this.offset.bottom >= this.getBottomLimit();
+    }
+
+
+    getBottomLimit() {
+        if (this.isAsleep) {
+            return canvas.height;
+        }
+        return canvas.height - this.SLEEP_SPACE; // awake: keep room to sink into when falling asleep
+    }
+
+
     isSleep() {
         return Date.now() - this.lastKeyPress > 3000;
     }
 
 
     checkSleepDone() {
-        if (this.isSleep() && this.isAnimationDone && !this.isDead()) {
+        if (this.isSleep() && this.isAnimationDone && !this.isAsleep && !this.isDead()) {
             this.isAsleep = true;
+            this.offset.top += this.SLEEP_SPACE;
+            this.offset.bottom -= this.SLEEP_SPACE;
         }
     }
 
@@ -265,7 +289,17 @@ class Character extends MovableObject {
     checkKeyPress() {
         if (this.isMoving() || this.world.keyboard.SPACE || this.world.keyboard.D) {
             this.lastKeyPress = Date.now();
+            this.wakeUp();
+        }
+    }
+
+
+    wakeUp() {
+        if (this.isAsleep) {
             this.isAsleep = false;
+            this.y += this.SLEEP_SPACE; // idle image starts where the sleeping image was, then rise() lifts him
+            this.offset.top -= this.SLEEP_SPACE;
+            this.offset.bottom += this.SLEEP_SPACE;
         }
     }
 
