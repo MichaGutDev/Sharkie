@@ -178,7 +178,7 @@ class Character extends MovableObject {
             return { images: this.IMAGES_SWIM, speed: 120 };
         }
         if (this.isAsleep) {
-            return { images: this.IMAGES_SLEEP, speed: 120 };
+            return { images: this.IMAGES_SLEEP, speed: 400 };
         }
         if (this.isSleep()) {
             return { images: this.IMAGES_LONG_IDLE, speed: 120, once: true };
