@@ -42,7 +42,10 @@ class Character extends MovableObject {
         'img/1.Sharkie/2.Long_IDLE/7.png',
         'img/1.Sharkie/2.Long_IDLE/8.png',
         'img/1.Sharkie/2.Long_IDLE/9.png',
-        'img/1.Sharkie/2.Long_IDLE/10.png',
+        'img/1.Sharkie/2.Long_IDLE/10.png'
+    ];
+
+    IMAGES_SLEEP = [
         'img/1.Sharkie/2.Long_IDLE/11.png',
         'img/1.Sharkie/2.Long_IDLE/12.png',
         'img/1.Sharkie/2.Long_IDLE/13.png',
@@ -104,11 +107,15 @@ class Character extends MovableObject {
     currentAnimation;
     isShootingBubble = false;
     isFinSlapping = false;
+    lastKeyPress = Date.now();
+    isAsleep = false;
 
 
     constructor() {
         super().loadImage('img/1.Sharkie/1.IDLE/1.png');
         this.loadImages(this.IMAGES_IDLE);
+        this.loadImages(this.IMAGES_LONG_IDLE);
+        this.loadImages(this.IMAGES_SLEEP);
         this.loadImages(this.IMAGES_SWIM);
         this.loadImages(this.IMAGES_DEAD);
         this.loadImages(this.IMAGES_HURT);
@@ -137,6 +144,7 @@ class Character extends MovableObject {
                 }
                 this.checkBubbleDone();
                 this.checkFinSlapDone();
+                this.checkSleepDone();
                 this.lastFrameTime = Date.now();
             }
         }, 25);
@@ -168,6 +176,12 @@ class Character extends MovableObject {
         if (this.isMoving()) {
             return { images: this.IMAGES_SWIM, speed: 120 };
         }
+        if (this.isAsleep) {
+            return { images: this.IMAGES_SLEEP, speed: 120 };
+        }
+        if (this.isSleep()) {
+            return { images: this.IMAGES_LONG_IDLE, speed: 120, once: true };
+        }
         return { images: this.IMAGES_IDLE, speed: 250 };
     }
 
@@ -186,6 +200,7 @@ class Character extends MovableObject {
         this.moveVertical();
         this.sink();
         this.updateCamera();
+        this.checkKeyPress();
     }
 
 
@@ -232,6 +247,26 @@ class Character extends MovableObject {
 
     isAtTop() {
         return this.y + this.offset.top <= 0;
+    }
+
+
+    isSleep() {
+        return Date.now() - this.lastKeyPress > 3000;
+    }
+
+
+    checkSleepDone() {
+        if (this.isSleep() && this.isAnimationDone && !this.isDead()) {
+            this.isAsleep = true;
+        }
+    }
+
+
+    checkKeyPress() {
+        if (this.isMoving() || this.world.keyboard.SPACE || this.world.keyboard.D) {
+            this.lastKeyPress = Date.now();
+            this.isAsleep = false;
+        }
     }
 
 
