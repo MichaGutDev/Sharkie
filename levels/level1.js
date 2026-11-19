@@ -35,6 +35,17 @@ function createLights(sections) {
 }
 
 
+function createCoins(startX) {
+    let coins = [];
+    let y = 200;
+    for (let index = 0; index < 5; index++) {
+        let x = startX + index * 50;
+        coins.push(new Coin(x, y));
+    }
+    return coins;
+}
+
+
 const level1 = new Level(
     [
         new JellyFish(),
@@ -44,5 +55,6 @@ const level1 = new Level(
         new Endboss()
     ],
     createLights(SECTIONS),
+    createCoins(600),
     createBackground(SECTIONS), LEVEL_END_X
 );
