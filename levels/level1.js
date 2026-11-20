@@ -37,9 +37,11 @@ function createLights(sections) {
 
 function createCoins(startX) {
     let coins = [];
-    let y = 200;
     for (let index = 0; index < 5; index++) {
-        let x = startX + index * 50;
+        let degrees = 160 - index * 35;
+        let angle = degrees * Math.PI / 180;
+        let x = startX + Math.cos(angle) * 140;
+        let y = 350 - Math.sin(angle) * 150;
         coins.push(new Coin(x, y));
     }
     return coins;
@@ -55,6 +57,6 @@ const level1 = new Level(
         new Endboss()
     ],
     createLights(SECTIONS),
-    createCoins(600),
+    createCoins(600).concat(createCoins(2500)),
     createBackground(SECTIONS), LEVEL_END_X
 );
