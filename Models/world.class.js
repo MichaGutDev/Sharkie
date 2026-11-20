@@ -68,6 +68,8 @@ class World {
         this.level.coins.forEach((coin) => {
             if (!coin.isCollected && this.character.isColliding(coin)) {
                 coin.isCollected = true;
+                this.character.collectCoin();
+                this.coinBar.setPercentage(this.character.coins * 10);
             }
         });
         this.level.coins = this.level.coins.filter((coin) => !coin.isCollected);
