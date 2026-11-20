@@ -36,6 +36,7 @@ class World {
             this.checkCollisions();
             this.checkBubble();
             this.checkBubbleHits();
+            this.checkCoinCollection();
             this.checkFinSlap();
             this.checkInflate();
         }, 1000 / 60);
@@ -60,6 +61,16 @@ class World {
             });
         });
         this.bubbles = this.bubbles.filter((bubble) => !bubble.hasHit);
+    }
+
+
+    checkCoinCollection() {
+        this.level.coins.forEach((coin) => {
+            if (!coin.isCollected && this.character.isColliding(coin)) {
+                coin.isCollected = true;
+            }
+        });
+        this.level.coins = this.level.coins.filter((coin) => !coin.isCollected);
     }
 
 

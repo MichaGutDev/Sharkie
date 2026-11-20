@@ -2,6 +2,7 @@ class Coin extends MovableObject {
 
     width = 30;
     height = this.width * 0.94;
+    isCollected = false;
 
     IMAGES_MOVE = [
         'img/4. Marcadores/1. Coins/1.png',
