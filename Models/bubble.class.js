@@ -7,10 +7,16 @@ class Bubble extends MovableObject {
     hasHit = false;
 
 
-    constructor(x, y, otherDirection) {
-        super().loadImage('img/1.Sharkie/4.Attack/Bubble trap/Bubble.png');
+    constructor(x, y, otherDirection, isPoisoned) {
+        super()
+        if (isPoisoned) {
+            this.loadImage('img/1.Sharkie/4.Attack/Bubble trap/Poisoned Bubble (for whale).png');
+        } else {
+            this.loadImage('img/1.Sharkie/4.Attack/Bubble trap/Bubble.png');
+        }
         this.x = x;
         this.y = y;
+        this.isPoisoned = isPoisoned;
         if (otherDirection) {
             this.speedX = -this.speedX;
         }

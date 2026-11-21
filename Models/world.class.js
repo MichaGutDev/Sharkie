@@ -129,7 +129,7 @@ class World {
         if (character.otherDirection) {
             x = character.x + 30;
         }
-        let bubble = new Bubble(x, character.y + 170, character.otherDirection);
+        let bubble = new Bubble(x, character.y + 170, character.otherDirection, false);
         this.bubbles.push(bubble);
     }
 
