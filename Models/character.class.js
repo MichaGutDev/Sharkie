@@ -112,6 +112,7 @@ class Character extends MovableObject {
     SLEEP_SPACE = 35; // Long Idle sinks Sharkie 35 px in the image
     coins = 0;
     poisons = 0;
+    isShootingPoison = false;
 
 
     constructor() {
@@ -289,7 +290,7 @@ class Character extends MovableObject {
 
 
     checkKeyPress() {
-        if (this.isMoving() || this.world.keyboard.SPACE || this.world.keyboard.D) {
+        if (this.isMoving() || this.world.keyboard.SPACE || this.world.keyboard.D || this.world.keyboard.F) {
             this.lastKeyPress = Date.now();
             this.wakeUp();
         }
@@ -312,6 +313,7 @@ class Character extends MovableObject {
             this.isAnimationDone = false;
             this.currentImage = 0;
             this.world.createBubble();
+            this.isShootingPoison = false;
         }
     }
 

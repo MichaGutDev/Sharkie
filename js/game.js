@@ -18,6 +18,7 @@ function setKey(event, isPressed) {
         case 'ArrowDown': keyboard.DOWN = isPressed; break;
         case 'Space': keyboard.SPACE = isPressed; break;
         case 'KeyD': keyboard.D = isPressed; break;
+        case 'KeyF': keyboard.F = isPressed; break;
     }
 }
 

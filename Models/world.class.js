@@ -35,6 +35,7 @@ class World {
             this.checkFinSlapHits();
             this.checkCollisions();
             this.checkBubble();
+            this.checkPoisonBubble();
             this.checkBubbleHits();
             this.checkCoinCollection();
             this.checkPoisonCollection();
@@ -48,6 +49,17 @@ class World {
         if (this.keyboard.D && !this.character.isShootingBubble && Date.now() - this.lastBubble > 600) {
             this.character.isShootingBubble = true;
             this.lastBubble = Date.now();
+        }
+    }
+
+
+    checkPoisonBubble() {
+        if (this.keyboard.F && !this.character.isShootingBubble && Date.now() - this.lastBubble > 600 && this.character.poisons > 0) {
+            this.character.isShootingBubble = true;
+            this.character.isShootingPoison = true;
+            this.lastBubble = Date.now();
+            this.character.poisons -= 1;
+            this.poisonBar.setPercentage(this.character.poisons * 20);
         }
     }
 
@@ -129,7 +141,7 @@ class World {
         if (character.otherDirection) {
             x = character.x + 30;
         }
-        let bubble = new Bubble(x, character.y + 170, character.otherDirection, false);
+        let bubble = new Bubble(x, character.y + 170, character.otherDirection, character.isShootingPoison);
         this.bubbles.push(bubble);
     }
 

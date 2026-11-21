@@ -8,7 +8,7 @@ class Bubble extends MovableObject {
 
 
     constructor(x, y, otherDirection, isPoisoned) {
-        super()
+        super();
         if (isPoisoned) {
             this.loadImage('img/1.Sharkie/4.Attack/Bubble trap/Poisoned Bubble (for whale).png');
         } else {
