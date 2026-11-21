@@ -111,6 +111,7 @@ class Character extends MovableObject {
     isAsleep = false;
     SLEEP_SPACE = 35; // Long Idle sinks Sharkie 35 px in the image
     coins = 0;
+    poisons = 0;
 
 
     constructor() {
@@ -336,5 +337,10 @@ class Character extends MovableObject {
 
     collectCoin() {
         this.coins += 1;
+    }
+
+
+    collectPoison() {
+        this.poisons += 1;
     }
 }

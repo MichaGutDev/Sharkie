@@ -37,6 +37,7 @@ class World {
             this.checkBubble();
             this.checkBubbleHits();
             this.checkCoinCollection();
+            this.checkPoisonCollection();
             this.checkFinSlap();
             this.checkInflate();
         }, 1000 / 60);
@@ -73,6 +74,18 @@ class World {
             }
         });
         this.level.coins = this.level.coins.filter((coin) => !coin.isCollected);
+    }
+
+
+    checkPoisonCollection() {
+        this.level.poisons.forEach((poison) => {
+            if (!poison.isCollected && this.character.isColliding(poison)) {
+                poison.isCollected = true;
+                this.character.collectPoison();
+                this.poisonBar.setPercentage(this.character.poisons * 20);
+            }
+        });
+        this.level.poisons = this.level.poisons.filter((poison) => !poison.isCollected);
     }
 
 
