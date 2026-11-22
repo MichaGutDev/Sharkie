@@ -104,8 +104,14 @@ class Endboss extends Enemy {
 
 
     getAnimation() {
+        if (this.isDead()) {
+            return { images: this.IMAGES_DEAD, speed: 120, once: true };
+        }
         if (!this.isIntroduced) {
             return { images: this.IMAGES_INTRODUCE, speed: 120, once: true };
+        }
+        if (this.isHurt()) {
+            return { images: this.IMAGES_HURT, speed: 120 };
         }
         return { images: this.IMAGES_FLOATING, speed: 350 };
     }
