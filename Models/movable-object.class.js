@@ -10,6 +10,8 @@ class MovableObject extends DrawableObject {
     energy = 100;
     lastHit = 0;
     isAnimationDone = false;
+    lastFrameTime = 0;
+    currentAnimation;
 
 
     playAnimation(images) {
@@ -27,6 +29,15 @@ class MovableObject extends DrawableObject {
             this.currentImage++;
         } else {
             this.isAnimationDone = true;
+        }
+    }
+    
+    
+    checkAnimationChange(animation) {
+        if (animation.images != this.currentAnimation) {
+            this.currentImage = 0;
+            this.isAnimationDone = false;
+            this.currentAnimation = animation.images;
         }
     }
 

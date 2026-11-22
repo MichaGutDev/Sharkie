@@ -114,8 +114,6 @@ class Character extends MovableObject {
     ];
 
     world;
-    lastFrameTime = 0;
-    currentAnimation;
     isShootingBubble = false;
     isFinSlapping = false;
     lastKeyPress = Date.now();
@@ -164,15 +162,6 @@ class Character extends MovableObject {
                 this.lastFrameTime = Date.now();
             }
         }, 25);
-    }
-
-
-    checkAnimationChange(animation) {
-        if (animation.images != this.currentAnimation) {
-            this.currentImage = 0;
-            this.isAnimationDone = false;
-            this.currentAnimation = animation.images;
-        }
     }
 
 
