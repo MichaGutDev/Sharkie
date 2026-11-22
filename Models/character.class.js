@@ -78,6 +78,17 @@ class Character extends MovableObject {
         'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/8.png'
     ];
 
+    IMAGES_POISON_BUBBLE_TRAP = [
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/1.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/2.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/3.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/4.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/5.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/6.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/7.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/8.png'
+    ];
+
     IMAGES_FIN_SLAP = [
         'img/1.Sharkie/4.Attack/Fin slap/1.png',
         'img/1.Sharkie/4.Attack/Fin slap/4.png',
@@ -124,6 +135,7 @@ class Character extends MovableObject {
         this.loadImages(this.IMAGES_DEAD);
         this.loadImages(this.IMAGES_HURT);
         this.loadImages(this.IMAGES_BUBBLE_TRAP);
+        this.loadImages(this.IMAGES_POISON_BUBBLE_TRAP);
         this.loadImages(this.IMAGES_FIN_SLAP);
 
         this.animate();
@@ -170,6 +182,9 @@ class Character extends MovableObject {
         }
         if (this.isHurt()) {
             return { images: this.IMAGES_HURT, speed: 120 };
+        }
+        if (this.isShootingPoison) {
+            return { images: this.IMAGES_POISON_BUBBLE_TRAP, speed: 120, once: true };
         }
         if (this.isShootingBubble) {
             return { images: this.IMAGES_BUBBLE_TRAP, speed: 120, once: true };
