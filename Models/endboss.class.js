@@ -3,13 +3,15 @@ class Endboss extends Enemy {
     width = 300;
     height = this.width * 1.168;   // keep image ratio (1041 x 1216)
     x = WORLD_WIDTH - 370;   // visible at the end of the level
-    y = 30;
+    y = 0;
     offset = {
         top: 140,
         left: 25,
         right: 30,
         bottom: 70
     };
+    hasAppeared = false;
+    isIntroduced = false;
 
     IMAGES_INTRODUCE = [
         'img/2.Enemy/3 Final Enemy/1.Introduce/1.png',
@@ -66,7 +68,7 @@ class Endboss extends Enemy {
     ];
 
     constructor() {
-        super().loadImage(this.IMAGES_FLOATING[0]);
+        super().loadImage(this.IMAGES_INTRODUCE[0]);
         this.loadImages(this.IMAGES_FLOATING);
         this.loadImages(this.IMAGES_INTRODUCE);
         this.loadImages(this.IMAGES_ATTACK);
@@ -83,6 +85,9 @@ class Endboss extends Enemy {
 
     animateImages() {
         setInterval(() => {
+            if (!this.hasAppeared) {
+                return;
+            }
             let animation = this.getAnimation();
             this.checkAnimationChange(animation);
             if (Date.now() - this.lastFrameTime >= animation.speed) {
@@ -91,6 +96,7 @@ class Endboss extends Enemy {
                 } else {
                     this.playAnimation(animation.images);
                 }
+                this.checkIntroDone();
                 this.lastFrameTime = Date.now();
             }
         }, 25);
@@ -98,6 +104,23 @@ class Endboss extends Enemy {
 
 
     getAnimation() {
+        if (!this.isIntroduced) {
+            return { images: this.IMAGES_INTRODUCE, speed: 120, once: true };
+        }
         return { images: this.IMAGES_FLOATING, speed: 350 };
+    }
+
+
+    draw(ctx) {
+        if (this.hasAppeared) {
+            super.draw(ctx);
+        }
+    }
+
+
+    checkIntroDone() {
+        if (!this.isIntroduced && this.isAnimationDone) {
+            this.isIntroduced = true;
+        }
     }
 }

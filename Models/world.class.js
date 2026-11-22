@@ -41,6 +41,7 @@ class World {
             this.checkPoisonCollection();
             this.checkFinSlap();
             this.checkInflate();
+            this.checkEndbossIntro();
         }, 1000 / 60);
     }
 
@@ -71,7 +72,7 @@ class World {
                     enemy.die();
                     bubble.hasHit = true;
                 }
-                if (bubble.isPoisoned && enemy instanceof Endboss && !enemy.isDead() && bubble.isColliding(enemy)) {
+                if (bubble.isPoisoned && enemy instanceof Endboss && enemy.hasAppeared && !enemy.isDead() && bubble.isColliding(enemy)) {
                     enemy.hit(25);
                     bubble.hasHit = true;
                 }
@@ -134,6 +135,15 @@ class World {
             if (enemy instanceof PufferFish && !enemy.isDead() && this.character.isOverlapping(hitbox, enemy.getInflateZone()) && !enemy.isInflated) {
                 enemy.isInflated = true;
                 enemy.currentImage = 0;
+            }
+        });
+    }
+
+
+    checkEndbossIntro() {
+        this.level.enemies.forEach((enemy) => {
+            if (enemy instanceof Endboss && enemy.x - this.character.x < 300) {
+                enemy.hasAppeared = true;
             }
         });
     }
