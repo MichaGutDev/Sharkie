@@ -34,8 +34,27 @@ class Endboss extends Enemy {
 
 
     animate() {
+        this.animateImages();
+    }
+
+
+    animateImages() {
         setInterval(() => {
-            this.playAnimation(this.IMAGES_FLOATING);
-        }, 350);
+            let animation = this.getAnimation();
+            this.checkAnimationChange(animation);
+            if (Date.now() - this.lastFrameTime >= animation.speed) {
+                if (animation.once) {
+                    this.playAnimationOnce(animation.images);
+                } else {
+                    this.playAnimation(animation.images);
+                }
+                this.lastFrameTime = Date.now();
+            }
+        }, 25);
+    }
+
+
+    getAnimation() {
+        return { images: this.IMAGES_FLOATING, speed: 350 };
     }
 }
