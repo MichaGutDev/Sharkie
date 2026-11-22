@@ -71,7 +71,8 @@ class World {
                     enemy.die();
                     bubble.hasHit = true;
                 }
-                if (bubble.isPoisoned && enemy instanceof Endboss && bubble.isColliding(enemy)) {
+                if (bubble.isPoisoned && enemy instanceof Endboss && !enemy.isDead() && bubble.isColliding(enemy)) {
+                    enemy.hit(25);
                     bubble.hasHit = true;
                 }
             });
@@ -152,7 +153,7 @@ class World {
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
             if (!enemy.isDead() && this.character.isColliding(enemy) && !this.character.isHurt()) {
-                this.character.hit();
+                this.character.hit(5);
                 this.lifeBar.setPercentage(this.character.energy);
             }
         });
