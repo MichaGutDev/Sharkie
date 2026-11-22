@@ -67,8 +67,11 @@ class World {
     checkBubbleHits() {
         this.bubbles.forEach((bubble) => {
             this.level.enemies.forEach((enemy) => {
-                if (enemy instanceof JellyFish && !enemy.isDead() && bubble.isColliding(enemy)) {
+                if (!bubble.isPoisoned && enemy instanceof JellyFish && !enemy.isDead() && bubble.isColliding(enemy)) {
                     enemy.die();
+                    bubble.hasHit = true;
+                }
+                if (bubble.isPoisoned && enemy instanceof Endboss && bubble.isColliding(enemy)) {
                     bubble.hasHit = true;
                 }
             });
