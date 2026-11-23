@@ -14,6 +14,7 @@ class Endboss extends Enemy {
     isIntroduced = false;
     isAttacking = false;
     lastAttack = 0;
+    speed = 5;
 
     IMAGES_INTRODUCE = [
         'img/2.Enemy/3 Final Enemy/1.Introduce/1.png',
@@ -71,6 +72,7 @@ class Endboss extends Enemy {
 
     constructor() {
         super().loadImage(this.IMAGES_INTRODUCE[0]);
+        this.startX = this.x;
         this.loadImages(this.IMAGES_FLOATING);
         this.loadImages(this.IMAGES_INTRODUCE);
         this.loadImages(this.IMAGES_ATTACK);
@@ -82,6 +84,7 @@ class Endboss extends Enemy {
 
     animate() {
         this.animateImages();
+        setInterval(() => this.moveEndboss(), 1000 / 60);
     }
 
 
@@ -140,6 +143,18 @@ class Endboss extends Enemy {
     checkAttackDone() {
         if (this.isAttacking && this.isAnimationDone) {
             this.isAttacking = false;
+        }
+    }
+
+
+    moveEndboss() {
+        if (!this.isIntroduced || this.isDead()) {
+            return;
+        }
+        if (this.isAttacking) {
+            this.x -= this.speed;
+        } else if (this.x < this.startX) {
+            this.x += this.speed;
         }
     }
 }
