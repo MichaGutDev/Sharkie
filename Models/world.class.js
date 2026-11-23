@@ -156,6 +156,7 @@ class World {
                 let sharkie = this.character.getHitbox();
                 let orca = enemy.getHitbox();
                 enemy.targetY = enemy.y + (sharkie.y + sharkie.height / 2) - (orca.y + orca.height / 2);
+                enemy.targetX = enemy.x + (sharkie.x + sharkie.width / 2) - orca.x;
                 enemy.isAttacking = true;
                 enemy.lastAttack = Date.now();
             }

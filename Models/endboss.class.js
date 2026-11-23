@@ -16,6 +16,7 @@ class Endboss extends Enemy {
     lastAttack = 0;
     speed = 5;
     targetY = 0;
+    targetX = 0;
 
     IMAGES_INTRODUCE = [
         'img/2.Enemy/3 Final Enemy/1.Introduce/1.png',
@@ -154,10 +155,10 @@ class Endboss extends Enemy {
             return;
         }
         if (this.isAttacking) {
-            this.x -= this.speed;
+            this.moveToX(this.targetX);
             this.moveToY(this.targetY);
-        } else if (this.x < this.startX) {
-            this.x += this.speed;
+        } else {
+            this.moveToX(this.startX);
             this.moveToY(this.startY);
         }
     }
@@ -169,6 +170,17 @@ class Endboss extends Enemy {
                 this.y += this.speed;
             } else {
                 this.y -= this.speed;
+            }
+        }
+    }
+
+
+    moveToX(target) {
+        if (Math.abs(this.x - target) > this.speed) {
+            if (this.x < target) {
+                this.x += this.speed;
+            } else {
+                this.x -= this.speed;
             }
         }
     }
