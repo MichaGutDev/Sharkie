@@ -12,6 +12,8 @@ class Endboss extends Enemy {
     };
     hasAppeared = false;
     isIntroduced = false;
+    isAttacking = false;
+    lastAttack = 0;
 
     IMAGES_INTRODUCE = [
         'img/2.Enemy/3 Final Enemy/1.Introduce/1.png',
@@ -97,6 +99,7 @@ class Endboss extends Enemy {
                     this.playAnimation(animation.images);
                 }
                 this.checkIntroDone();
+                this.checkAttackDone();
                 this.lastFrameTime = Date.now();
             }
         }, 25);
@@ -109,6 +112,9 @@ class Endboss extends Enemy {
         }
         if (!this.isIntroduced) {
             return { images: this.IMAGES_INTRODUCE, speed: 120, once: true };
+        }
+        if (this.isAttacking) {
+            return { images: this.IMAGES_ATTACK, speed: 120, once: true };
         }
         if (this.isHurt()) {
             return { images: this.IMAGES_HURT, speed: 120 };
@@ -127,6 +133,13 @@ class Endboss extends Enemy {
     checkIntroDone() {
         if (!this.isIntroduced && this.isAnimationDone) {
             this.isIntroduced = true;
+        }
+    }
+
+
+    checkAttackDone() {
+        if (this.isAttacking && this.isAnimationDone) {
+            this.isAttacking = false;
         }
     }
 }

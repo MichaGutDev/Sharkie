@@ -42,6 +42,7 @@ class World {
             this.checkFinSlap();
             this.checkInflate();
             this.checkEndbossIntro();
+            this.checkEndbossAttack();
         }, 1000 / 60);
     }
 
@@ -144,6 +145,16 @@ class World {
         this.level.enemies.forEach((enemy) => {
             if (enemy instanceof Endboss && enemy.x - this.character.x < 300) {
                 enemy.hasAppeared = true;
+            }
+        });
+    }
+
+
+    checkEndbossAttack() {
+        this.level.enemies.forEach((enemy) => {
+            if (enemy instanceof Endboss && enemy.isIntroduced && !enemy.isDead() && !enemy.isAttacking && Date.now() - enemy.lastAttack > 2000) {
+                enemy.isAttacking = true;
+                enemy.lastAttack = Date.now();
             }
         });
     }
