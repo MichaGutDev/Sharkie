@@ -178,7 +178,11 @@ class World {
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
             if (!enemy.isDead() && this.character.isColliding(enemy) && !this.character.isHurt()) {
-                this.character.hit(5);
+                let damage = 5;
+                if (enemy instanceof Endboss && enemy.isAttacking) {
+                    damage = 25;
+                }
+                this.character.hit(damage);
                 this.lifeBar.setPercentage(this.character.energy);
             }
         });
