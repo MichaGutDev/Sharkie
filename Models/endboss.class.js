@@ -139,6 +139,7 @@ class Endboss extends Enemy {
     checkIntroDone() {
         if (!this.isIntroduced && this.isAnimationDone) {
             this.isIntroduced = true;
+            this.lastAttack = Date.now();
         }
     }
 
@@ -146,6 +147,7 @@ class Endboss extends Enemy {
     checkAttackDone() {
         if (this.isAttacking && this.isAnimationDone) {
             this.isAttacking = false;
+            this.lastAttack = Date.now();
         }
     }
 
