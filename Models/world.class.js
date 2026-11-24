@@ -10,6 +10,7 @@ class World {
     poisonBar = new StatusBar('poison', 0, 0);
     bubbles = [];
     lastBubble = 0;
+    isBossFight = false;
 
 
     constructor(canvas, keyboard) {
@@ -145,6 +146,7 @@ class World {
         this.level.enemies.forEach((enemy) => {
             if (enemy instanceof Endboss && enemy.x - this.character.x < 300) {
                 enemy.hasAppeared = true;
+                this.isBossFight = true;
             }
         });
     }

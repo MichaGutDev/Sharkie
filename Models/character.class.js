@@ -239,7 +239,7 @@ class Character extends MovableObject {
 
     updateCamera() {
         let offset = 100;
-        if (this.otherDirection) {
+        if (this.otherDirection && !this.world.isBossFight) {
             offset = 370;
         }
         let target = Math.max(-(WORLD_WIDTH - 720), Math.min(0, -this.x + offset));
