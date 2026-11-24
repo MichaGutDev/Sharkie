@@ -17,6 +17,7 @@ class Endboss extends Enemy {
     speed = 6;
     targetY = 0;
     targetX = 0;
+    attackPause = 4000;
 
     IMAGES_INTRODUCE = [
         'img/2.Enemy/3 Final Enemy/1.Introduce/1.png',
@@ -140,6 +141,7 @@ class Endboss extends Enemy {
         if (!this.isIntroduced && this.isAnimationDone) {
             this.isIntroduced = true;
             this.lastAttack = Date.now();
+            this.attackPause = 3500 + Math.random() * 1500;
         }
     }
 
@@ -148,6 +150,7 @@ class Endboss extends Enemy {
         if (this.isAttacking && this.isAnimationDone) {
             this.isAttacking = false;
             this.lastAttack = Date.now();
+            this.attackPause = 3500 + Math.random() * 1500;
         }
     }
 

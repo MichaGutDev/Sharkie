@@ -154,7 +154,7 @@ class World {
 
     checkEndbossAttack() {
         this.level.enemies.forEach((enemy) => {
-            if (enemy instanceof Endboss && enemy.isIntroduced && !enemy.isDead() && !enemy.isAttacking && Date.now() - enemy.lastAttack > 4000 && enemy.x - this.character.x < 500) {
+            if (enemy instanceof Endboss && enemy.isIntroduced && !enemy.isDead() && !enemy.isAttacking && Date.now() - enemy.lastAttack > enemy.attackPause && enemy.x - this.character.x < 500) {
                 let sharkie = this.character.getHitbox();
                 let orca = enemy.getHitbox();
                 enemy.targetY = enemy.y + (sharkie.y + sharkie.height / 2) - (orca.y + orca.height / 2);
