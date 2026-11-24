@@ -14,7 +14,7 @@ class Endboss extends Enemy {
     isIntroduced = false;
     isAttacking = false;
     lastAttack = 0;
-    speed = 5;
+    speed = 10;
     targetY = 0;
     targetX = 0;
 
@@ -120,7 +120,7 @@ class Endboss extends Enemy {
             return { images: this.IMAGES_INTRODUCE, speed: 120, once: true };
         }
         if (this.isAttacking) {
-            return { images: this.IMAGES_ATTACK, speed: 120, once: true };
+            return { images: this.IMAGES_ATTACK, speed: 150, once: true };
         }
         if (this.isHurt()) {
             return { images: this.IMAGES_HURT, speed: 120 };
