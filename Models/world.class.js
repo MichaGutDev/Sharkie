@@ -62,7 +62,7 @@ class World {
             this.character.isShootingPoison = true;
             this.lastBubble = Date.now();
             this.character.poisons -= 1;
-            this.poisonBar.setPercentage(this.character.poisons * 20);
+            this.poisonBar.setPercentage(this.character.poisons * 10);
         }
     }
 
@@ -75,7 +75,7 @@ class World {
                     bubble.hasHit = true;
                 }
                 if (bubble.isPoisoned && enemy instanceof Endboss && enemy.hasAppeared && !enemy.isDead() && bubble.isColliding(enemy)) {
-                    enemy.hit(25);
+                    enemy.hit(20);
                     bubble.hasHit = true;
                 }
             });
@@ -101,7 +101,7 @@ class World {
             if (!poison.isCollected && this.character.isColliding(poison)) {
                 poison.isCollected = true;
                 this.character.collectPoison();
-                this.poisonBar.setPercentage(this.character.poisons * 20);
+                this.poisonBar.setPercentage(this.character.poisons * 10);
             }
         });
         this.level.poisons = this.level.poisons.filter((poison) => !poison.isCollected);
@@ -154,7 +154,7 @@ class World {
 
     checkEndbossAttack() {
         this.level.enemies.forEach((enemy) => {
-            if (enemy instanceof Endboss && enemy.isIntroduced && !enemy.isDead() && !enemy.isAttacking && Date.now() - enemy.lastAttack > 3000 && enemy.x - this.character.x < 700) {
+            if (enemy instanceof Endboss && enemy.isIntroduced && !enemy.isDead() && !enemy.isAttacking && Date.now() - enemy.lastAttack > 4000 && enemy.x - this.character.x < 700) {
                 let sharkie = this.character.getHitbox();
                 let orca = enemy.getHitbox();
                 enemy.targetY = enemy.y + (sharkie.y + sharkie.height / 2) - (orca.y + orca.height / 2);

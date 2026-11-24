@@ -48,6 +48,16 @@ function createCoins(startX) {
 }
 
 
+function createPoisons(positions) {
+    let poisons = [];
+    positions.forEach((x, index) => {
+        let side = getSectionPart(index, 'Left', 'Right');
+        poisons.push(new Poison(`img/4. Marcadores/Posión/Light - ${side}.png`, x));
+    });
+    return poisons;
+}
+
+
 const level1 = new Level(
     [
         new JellyFish(),
@@ -58,12 +68,6 @@ const level1 = new Level(
     ],
     createLights(SECTIONS),
     createCoins(600).concat(createCoins(2500)),
-    [
-        new Poison('img/4. Marcadores/Posión/Light - Left.png', 250),
-        new Poison('img/4. Marcadores/Posión/Light - Right.png', 1100),
-        new Poison('img/4. Marcadores/Posión/Light - Left.png', 1750),
-        new Poison('img/4. Marcadores/Posión/Light - Right.png', 3000),
-        new Poison('img/4. Marcadores/Posión/Light - Left.png', 3400)
-    ],
+    createPoisons([250, 900, 1250, 1600, 1950, 2250, 2850, 3200, 3500, 3750]),
     createBackground(SECTIONS), LEVEL_END_X
 );
