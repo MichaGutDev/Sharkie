@@ -14,7 +14,7 @@ class Endboss extends Enemy {
     isIntroduced = false;
     isAttacking = false;
     lastAttack = 0;
-    speed = 10;
+    speed = 6;
     targetY = 0;
     targetX = 0;
 
