@@ -3,6 +3,7 @@ const SECTIONS = 6;
 const SECTION_WIDTH = 719;
 const WORLD_WIDTH = SECTIONS * SECTION_WIDTH;   // 4314
 const LEVEL_END_X = WORLD_WIDTH - 450;   // how far Sharkie can swim
+let level1;
 
 
 function getSectionPart(index, evenPart, oddPart) {
@@ -57,17 +58,18 @@ function createPoisons(positions) {
     return poisons;
 }
 
-
-const level1 = new Level(
-    [
-        new JellyFish(),
-        new JellyFish(),
-        new JellyFish(),
-        new PufferFish(),
-        new Endboss()
-    ],
-    createLights(SECTIONS),
-    createCoins(600).concat(createCoins(2500)),
-    createPoisons([250, 900, 1250, 1600, 1950, 2250, 2850, 3200, 3500, 3750]),
-    createBackground(SECTIONS), LEVEL_END_X
-);
+function initLevel() {
+    level1 = new Level(
+        [
+            new JellyFish(),
+            new JellyFish(),
+            new JellyFish(),
+            new PufferFish(),
+            new Endboss()
+        ],
+        createLights(SECTIONS),
+        createCoins(600).concat(createCoins(2500)),
+        createPoisons([250, 900, 1250, 1600, 1950, 2250, 2850, 3200, 3500, 3750]),
+        createBackground(SECTIONS), LEVEL_END_X
+    );
+}
