@@ -25,7 +25,7 @@ class Bubble extends MovableObject {
 
 
     float() {
-        setInterval(() => {
+        setStoppableInterval(() => {
             this.x += this.speedX;
             this.speedX *= 0.96;
             this.speedY += 0.05;

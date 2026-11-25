@@ -141,13 +141,13 @@ class Character extends MovableObject {
 
 
     animate() {
-        setInterval(() => this.moveCharacter(), 1000 / 60);
+        setStoppableInterval(() => this.moveCharacter(), 1000 / 60);
         this.animateImages();
     }
 
 
     animateImages() {
-        setInterval(() => {
+        setStoppableInterval(() => {
             let animation = this.getAnimation();
             this.checkAnimationChange(animation);
             if (Date.now() - this.lastFrameTime >= animation.speed) {

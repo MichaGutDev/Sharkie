@@ -35,7 +35,7 @@ class JellyFish extends Enemy {
     animate() {
         this.moveLeft();
 
-        setInterval(() => {
+        setStoppableInterval(() => {
             if (this.isDead()) {
                 this.playAnimationOnce(this.IMAGES_DEAD);
             } else {

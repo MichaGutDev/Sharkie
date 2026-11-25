@@ -29,7 +29,7 @@ class World {
 
 
     run() {
-        setInterval(() => {
+        setStoppableInterval(() => {
             if (this.character.isDead()) {
                 return;
             }

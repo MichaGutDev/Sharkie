@@ -58,14 +58,14 @@ class PufferFish extends Enemy {
     animate() {
         this.moveLeft();
 
-        setInterval(() => {
+        setStoppableInterval(() => {
             if (this.isDead() && !this.isAtBottom()) {
                 this.y += 0.5;
                 this.offset.bottom = 49; // dead image 3: fish sits in the upper part of the image
             }
         }, 1000 / 60);
 
-        setInterval(() => {
+        setStoppableInterval(() => {
             if (this.isDead()) {
                 this.playAnimationOnce(this.IMAGES_DEAD);
             } else if (this.isInflated === true && !this.isAnimationDone) {

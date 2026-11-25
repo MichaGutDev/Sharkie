@@ -88,12 +88,12 @@ class Endboss extends Enemy {
 
     animate() {
         this.animateImages();
-        setInterval(() => this.moveEndboss(), 1000 / 60);
+        setStoppableInterval(() => this.moveEndboss(), 1000 / 60);
     }
 
 
     animateImages() {
-        setInterval(() => {
+        setStoppableInterval(() => {
             if (!this.hasAppeared) {
                 return;
             }
