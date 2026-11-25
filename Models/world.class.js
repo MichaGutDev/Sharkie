@@ -11,6 +11,7 @@ class World {
     bubbles = [];
     lastBubble = 0;
     isBossFight = false;
+    animationFrameId;
 
 
     constructor(canvas, keyboard) {
@@ -210,7 +211,7 @@ class World {
 
         //draw() wird immer wieder aufgerufen
         let self = this;
-        requestAnimationFrame(function () {
+        this.animationFrameId = requestAnimationFrame(function () {
             self.draw();
         });
     }

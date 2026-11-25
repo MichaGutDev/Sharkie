@@ -34,6 +34,7 @@ function setStoppableInterval(fn, time) {
 function stopGame() {
     intervalIds.forEach(clearInterval);
     intervalIds = [];
+    cancelAnimationFrame(world.animationFrameId);
 }
 
 
