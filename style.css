@@ -16,7 +16,7 @@ canvas {
 
 .game {
     position: relative;
-    width: min(100vw, 150dvh);
+    width: min(720px, 100vw, 150dvh);
     aspect-ratio: 3 / 2;
     container-type: size;
 }
