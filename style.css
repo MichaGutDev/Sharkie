@@ -141,3 +141,7 @@ canvas {
 .legal-link:hover {
     color: #fceb21;
 }
+
+.d-none {
+    display: none;
+}

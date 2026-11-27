@@ -38,5 +38,11 @@ function stopGame() {
 }
 
 
+function startGame() {
+    document.getElementById('startScreen').classList.add('d-none');
+    init();
+}
+
+
 window.addEventListener('keydown', (event) => setKey(event, true));
 window.addEventListener('keyup', (event) => setKey(event, false));

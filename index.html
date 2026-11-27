@@ -27,7 +27,7 @@
     <script src="./js/game.js"></script>
 </head>
 
-<body onload="init()">
+<body>
 
     <div id="game" class="game">
         <canvas id="canvas" width="720" height="480">
@@ -57,7 +57,7 @@
             <div class="start-menu">
                 <h1 class="start-title">SHARKIE</h1>
                 <p class="start-text">Dive in, collect poison and defeat the Orca!</p>
-                <button class="btn btn-purple">START</button>
+                <button onclick="startGame()" class="btn btn-purple">START</button>
                 <button class="btn btn-yellow">HOW TO PLAY</button>
             </div>
             <a class="legal-link" href="./impressum.html">Legal notice</a>
