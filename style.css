@@ -1,7 +1,10 @@
 body {
     margin: 0;
     height: 100dvh;
+    background-image: url("./img/3. Background/Dark/completo.png");
     background-color: #1c1756;
+    background-size: cover;
+    background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,6 +22,7 @@ canvas {
     width: min(720px, 100vw, 150dvh);
     aspect-ratio: 3 / 2;
     container-type: size;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
 }
 
 .screen {
